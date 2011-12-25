@@ -18,7 +18,7 @@ $_INSTALL['MAIN_MENU_ITEM'] = array (
 );
 
 
-$_INSTALL['VERSION'] = 1.41;
+$_INSTALL['VERSION'] = 1.411;
 
 $_INSTALL['PUBLIC_CLONE_URL'] = 'git://github.com/diversen/locales.git';
 $_INSTALL['PRIVATE_CLONE_URL'] = 'git@github.com:diversen/locales.git';
