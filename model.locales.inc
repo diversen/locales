@@ -30,7 +30,7 @@ class locales {
         }
 
         $dropdown = intl::getTimezones();
-        $default = get_main_ini('date_default_timezone');
+        $default = config::getMainIni('date_default_timezone');
 
         html::formStart('timezone');
         html::legend(lang::translate('locales_timezone_legend'));
@@ -58,7 +58,7 @@ class locales {
         }
 
         $dropdown = intl::getSystemLocalesUTF8();
-        $default = get_main_ini('locale');
+        $default = config::getMainIni('locale');
 
         html::formStart('locale');
         html::legend(lang::translate('locales_set_locale_legend'));
@@ -120,7 +120,7 @@ class locales {
         }
 
         $dropdown = self::getLanguages();
-        $default = get_main_ini('language');
+        $default = config::getMainIni('language');
 
         html::formStart('language');
         html::legend(lang::translate('locales_set_language_lengend'));
