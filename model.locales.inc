@@ -6,7 +6,7 @@
  */
 
 include_once "intl.php";
-include_module('configdb');
+moduleLoader::includeModule('configdb');
 
 /**
  * Class for setting locales
