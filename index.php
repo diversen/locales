@@ -7,5 +7,8 @@ if (!session::checkAccessControl('locales_allow')){
 if (isset($_POST)) html::specialEncode ($_POST);
 
 locales::displaySetTimezone();
-locales::displaySetLocaleUTF8();
+if (!config::isWindows()) {
+    // we can only set locales from web
+    locales::displaySetLocaleUTF8();
+}
 locales::displaySetLanguage();
