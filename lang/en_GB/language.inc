@@ -10,3 +10,5 @@ $_COS_LANG_MODULE['locales_language_updated'] = 'Locales has been updated';
 $_COS_LANG_MODULE['locales_language_not_valid'] = 'Language is not valid';
 $_COS_LANG_MODULE['locales_set_language_lengend'] = 'Set language of interface and HTML document';
 
+
+$_COS_LANG_MODULE['locales_reload_language'] = 'Update all language files (be patient)';

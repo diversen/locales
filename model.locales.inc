@@ -112,8 +112,7 @@ class locales {
                 configdb::set('lang', $lang, 'main');
                 
                 session::setActionMessage(lang::translate('locales_language_updated'));
-                header("Location: /locales/index");
-                exit;
+                http::locationHeader('/locales/index');
             } else {
                 session::setActionMessage(lang::translate('locales_language_not_valid'));
             }
@@ -130,4 +129,25 @@ class locales {
 
         echo html::getStr();   
     } 
+    
+    public static function displayReloadLang () {
+        
+        if (isset($_POST['language_reload'])) {
+            
+            $reload = new moduleinstaller();
+            $reload->reloadCosLanguages();
+            $reload->reloadLanguages();
+            session::setActionMessage(lang::translate('locales_language_updated'));
+            http::locationHeader('/locales/index');
+        }
+        
+        html::formStart('language_reload');
+        html::legend(lang::translate('locales_reload_language'));
+        //html::select('language', $dropdown, 'language', 'id', $default, array(), null);
+        html::submit('language_reload', lang::system('system_submit'));
+        html::formEnd();
+        
+        echo html::getStr();  
+
+    }
 }

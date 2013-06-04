@@ -10,3 +10,5 @@ $_COS_LANG_MODULE['locales_language_updated'] = 'Sproget er blevet opdateret';
 $_COS_LANG_MODULE['locales_language_not_valid'] = 'Ikke et gydigt sprog';
 $_COS_LANG_MODULE['locales_set_language_lengend'] = 'Vælg interface sprog';
 
+
+$_COS_LANG_MODULE['locales_reload_language'] = 'Opdater oversættelse (hav tålmodighed)';

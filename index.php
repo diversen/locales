@@ -12,3 +12,4 @@ if (!config::isWindows()) {
     locales::displaySetLocaleUTF8();
 }
 locales::displaySetLanguage();
+locales::displayReloadLang();
