@@ -21,11 +21,11 @@ class locales {
         if (isset($_POST['timezone'])) {
             if (intl::validTimezone($_POST['timezone'])) {
                 configdb::set('date_default_timezone', $_POST['timezone'], 'main');
-                session::setActionMessage(lang::translate('locales_timezone_updated'));
+                session::setActionMessage(lang::translate('Timezone has been updated'));
                 header("Location: /locales/index");
                 exit;
             } else {
-                session::setActionMessage(lang::translate('locales_timezone_not_valid'));
+                session::setActionMessage(lang::translate('Timezone is not valid'));
             }
         }
 
@@ -33,7 +33,7 @@ class locales {
         $default = config::getMainIni('date_default_timezone');
 
         html::formStart('timezone');
-        html::legend(lang::translate('locales_timezone_legend'));
+        html::legend(lang::translate('Set timezone for your system'));
         html::select('timezone', $dropdown, 'zone', 'id', $default, array(), null);
         html::submit('submit', lang::system('system_submit'));
         html::formEnd();
@@ -48,12 +48,12 @@ class locales {
         if (isset($_POST['locale'])) {
             if (intl::validLocaleUTF8($_POST['locale'])) {
                 configdb::set('locale', $_POST['locale'], 'main');
-                session::setActionMessage(lang::translate('locales_locale_updated'));
+                session::setActionMessage(lang::translate('Locale has been updated'));
 
                 header("Location: /locales/index");
                 exit;
             } else {
-                session::setActionMessage(lang::translate('locales_locale_not_valid'));
+                session::setActionMessage(lang::translate('Locale is not valid'));
             }
         }
 
@@ -61,7 +61,7 @@ class locales {
         $default = config::getMainIni('locale');
 
         html::formStart('locale');
-        html::legend(lang::translate('locales_set_locale_legend'));
+        html::legend(lang::translate('Set locale. Set e.g. dates and money symbols to your language specifics'));
         html::select('locale', $dropdown, 'locale', 'id', $default, array(), null);
         html::submit('submit', lang::system('system_submit'));
         html::formEnd();
@@ -111,10 +111,10 @@ class locales {
                 $lang = str_replace('_', '-', $_POST['language']);
                 configdb::set('lang', $lang, 'main');
                 
-                session::setActionMessage(lang::translate('locales_language_updated'));
+                session::setActionMessage(lang::translate('Locale has been updated'));
                 http::locationHeader('/locales/index');
             } else {
-                session::setActionMessage(lang::translate('locales_language_not_valid'));
+                session::setActionMessage(lang::translate('Language is not valid'));
             }
         }
 
@@ -122,7 +122,7 @@ class locales {
         $default = config::getMainIni('language');
 
         html::formStart('language');
-        html::legend(lang::translate('locales_set_language_lengend'));
+        html::legend(lang::translate('Set language of interface and HTML document'));
         html::select('language', $dropdown, 'language', 'id', $default, array(), null);
         html::submit('submit', lang::system('system_submit'));
         html::formEnd();
@@ -137,12 +137,12 @@ class locales {
             $reload = new moduleinstaller();
             $reload->reloadCosLanguages();
             $reload->reloadLanguages();
-            session::setActionMessage(lang::translate('locales_language_updated'));
+            session::setActionMessage(lang::translate('Locale has been updated'));
             http::locationHeader('/locales/index');
         }
         
         html::formStart('language_reload');
-        html::legend(lang::translate('locales_reload_language'));
+        html::legend(lang::translate('Update all language files (may take a few minutes)'));
         //html::select('language', $dropdown, 'language', 'id', $default, array(), null);
         html::submit('language_reload', lang::system('system_submit'));
         html::formEnd();

@@ -1,12 +1,11 @@
 <?php
 
-$_COS_LANG_MODULE['locales_timezone_updated'] = 'Tidszon Uppdaterat';
-$_COS_LANG_MODULE['locales_timezone_not_valid'] = 'Tidszon är inte giltig';
-$_COS_LANG_MODULE['locales_timezone_legend'] = 'Ställ tidszon';
-$_COS_LANG_MODULE['locales_locale_updated'] = 'Val av språk har uppdaterats';
-$_COS_LANG_MODULE['locales_locale_not_valid'] = 'Val av språk är inte giltig';
-$_COS_LANG_MODULE['locales_set_locale_legend'] = 'Ange språk. Ställ t.ex. datum och symboler pengar till ditt språk detaljerna';
-$_COS_LANG_MODULE['locales_language_updated'] = 'Språkversioner har uppdaterats';
-$_COS_LANG_MODULE['locales_language_not_valid'] = 'Språket är inte giltig';
-$_COS_LANG_MODULE['locales_set_language_lengend'] = 'Ange språk för gränssnitt och HTML-dokument';
-$_COS_LANG_MODULE['locales_reload_language'] = 'Uppdatera alla språkfiler (ha tålamod)';
+$_COS_LANG_MODULE['Timezone has been updated'] = 'Tidszon har uppdaterats';
+$_COS_LANG_MODULE['Timezone is not valid'] = 'Tidszon är inte giltig';
+$_COS_LANG_MODULE['Set timezone for your system'] = 'Ange tidszon för ditt system';
+$_COS_LANG_MODULE['Locale has been updated'] = 'Val av språk har uppdaterats';
+$_COS_LANG_MODULE['Locale is not valid'] = 'Val av språk är inte giltig';
+$_COS_LANG_MODULE['Set locale. Set e.g. dates and money symbols to your language specifics'] = 'Ställ locale. Ställ t.ex. datum och symboler pengar till ditt språk detaljerna';
+$_COS_LANG_MODULE['Language is not valid'] = 'Språket är inte giltig';
+$_COS_LANG_MODULE['Set language of interface and HTML document'] = 'Ange språk för gränssnitt och HTML-dokument';
+$_COS_LANG_MODULE['Update all language files (may take a few minutes)'] = 'Uppdatera alla språkfiler (ha tålamod)';

@@ -7,7 +7,7 @@
  */
 
 $_INSTALL['MAIN_MENU_ITEM'] = array (
-    'title' => 'locales_main_menu_title',
+    'title' => 'Language',
     'url' => '/locales/index',
     'auth' => 'admin',
     'module_name' => 'locales',
