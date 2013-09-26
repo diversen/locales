@@ -73,9 +73,8 @@ class locales {
      * method for getting system translations (languages)
      * @return array $rows rows with system languages for populating dropdown
      */
-    public static function getLanguages () {
-        $db = new db();
-        $rows = $db->selectAll('language', array ('DISTINCT(language)'));
+    public static function getLanguagesForDropdown () {
+        $rows = self::getLanguages();
         $ary = array();
         foreach ($rows as $key => $val) {
             $ary[] = array ('id' => $val['language'], 'language' => $val['language']);
@@ -83,13 +82,21 @@ class locales {
         return $ary; 
     }
     
+    public static function getLanguages() {
+        $db = new db();
+        $rows = $db->selectAll('language', array ('DISTINCT(language)'));
+        return $rows;
+    }
+    
+    
+    
     /**
      * method for checking if system translation (language) exists 
      * @param string $language the language to check for
      * @return boolean true if language exists else false
      */
     public static function validLanguage ($language) {
-        $langs = self::getLanguages();
+        $langs = self::getLanguagesForDropdown();
         foreach ($langs as $key => $val) {
             if ($val['id'] == $language) {
                 return true;
@@ -118,7 +125,7 @@ class locales {
             }
         }
 
-        $dropdown = self::getLanguages();
+        $dropdown = self::getLanguagesForDropdown();
         $default = config::getMainIni('language');
 
         html::formStart('language');
@@ -151,3 +158,5 @@ class locales {
 
     }
 }
+
+class locales_module extends locales {}
