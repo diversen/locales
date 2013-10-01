@@ -12,3 +12,9 @@ $_COS_LANG_MODULE['Set locale. Set e.g. dates and money symbols to your language
 $_COS_LANG_MODULE['Language is not valid'] = 'Ikke et gydigt sprog';
 $_COS_LANG_MODULE['Set language of interface and HTML document'] = 'Vælg interface sprog';
 $_COS_LANG_MODULE['Update all language files (may take a few minutes)'] = 'Opdater oversættelse (hav tålmodighed)';
+
+// Translation of file /modules/locales/edit.php
+
+$_COS_LANG_MODULE['Load language all into DB'] = 'Load language all into DB';
+$_COS_LANG_MODULE['submit'] = 'submit';
+$_COS_LANG_MODULE['Reload language_all files from <span class="notranslate">{template}</span> into DB'] = 'Reload language_all files from <span class="notranslate">{template}</span> into DB';

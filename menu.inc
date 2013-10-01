@@ -8,7 +8,7 @@
 $_MODULE_MENU = array (
     array(
         'title' => lang::translate('Base settings'),
-        'url' => '/gallery/index'),
+        'url' => '/locales/index'),
 
         
 );
@@ -17,13 +17,6 @@ $locales_db = config::getModuleIni('locales_db_language');
 if ($locales_db) {
     $_MODULE_MENU[] = array(
         'title' => lang::translate('Edit translation'),
-        'url' => '/gallery/admin/index',
+        'url' => '/locales/edit',
         'auth' => 'admin');
-}
-if (config::getModuleIni('gallery_allow_zip')) {
-    $_MODULE_MENU[] =
-        array(
-            'title' => lang::translate('gallery_menu_upload_zip'),
-            'url' => '/gallery/upload/index',
-            'auth' => 'admin');
 }
