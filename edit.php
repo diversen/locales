@@ -80,22 +80,26 @@ class locales_edit extends locales {
     }
     
     public function displayEditLanguage ($lang) {
+        
         $f = new html ();
         $f->formStart('update_lang');
-        $f->hidden('lang', 'test');
+        $f->hidden('lang', $lang);
+        $f->legend('Change translation');
         $i = 0;
+        
         foreach ($lang as $key => $val) {
             $f->addHtml(html::specialEncode($key) . "<br />");
             $length = strlen($val);
             $options = array ('size' => $length);
-            $f->text($i, html::specialEncode($val), $options);
+            $f->text(html::specialEncode($key), html::specialEncode($val), $options);
             $i++;
         }
+        $f->submit('update_lang', lang::translate('Update'));
         $f->formEnd();
         echo $f->getStr();
     }
     
-    public function editLanguageForm () {
+    public function editLanguageLinks () {
         $files = $this->getLanguageAllFiles();
         $langs = array_keys($files);
         foreach ($langs as $lang) {
@@ -119,7 +123,7 @@ if (isset($_POST['load_all'])) {
 }
 
 if (!empty($loaded)) {
-    $l->editLanguageForm();
+    $l->editLanguageLinks();
 }
 
 $edit = uri::fragment(2);
@@ -128,5 +132,9 @@ if ($edit == 1) {
     $org =  $l->getLanguageSingleDb($edit_lang);
     $lang = unserialize($org['translation']);
     $l->displayEditLanguage($lang);
+}
+
+if (isset($_POST['update_lang'])) {
+    
 }
 

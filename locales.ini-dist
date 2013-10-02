@@ -1,1 +1,6 @@
+; who are allowed to use module
 locales_allow = "super"
+; allow to import language into db
+locales_db_language = 1
+; which template are language-all.inc located (they can be collected with ./coscli.sh translate --collect
+locales_language_all_template = 'template'
