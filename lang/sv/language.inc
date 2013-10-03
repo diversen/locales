@@ -9,6 +9,7 @@ $_COS_LANG_MODULE['Set locale. Set e.g. dates and money symbols to your language
 $_COS_LANG_MODULE['Language is not valid'] = 'Språket är inte giltig';
 $_COS_LANG_MODULE['Set language of interface and HTML document'] = 'Ange språk för gränssnitt och HTML-dokument';
 $_COS_LANG_MODULE['Update all language files (may take a few minutes)'] = 'Uppdatera alla språkfiler (ha tålamod)';
+$_COS_LANG_MODULE['Her er en lille test'] = 'Här är ett litet test';
 $_COS_LANG_MODULE['Load language all into DB'] = 'Ladda språk alla i DB';
 $_COS_LANG_MODULE['submit'] = 'lämna';
 $_COS_LANG_MODULE['Update'] = 'Uppdatera';

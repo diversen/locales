@@ -1,5 +1,6 @@
 <?php
 
+lang::translate('Her er en lille test');
 class locales_db extends locales {
     
     /**
