@@ -35,7 +35,7 @@ if (isset($_POST['update_lang'])) {
     foreach ($org as $key => $val) {
         $post_val = $_POST['input_key'][$i];
         if ($post_val != $val) {
-            echo "$post_val\n$val\n";
+            log::error("$post_val\n$val\n");
             $ary[$key] = $post_val;
         } else {
             $ary[$key] = $val;
