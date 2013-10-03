@@ -7,7 +7,6 @@ if (!session::checkAccessControl('locales_allow')){
 $template = config::getModuleIni('locales_language_all_template');
 $l = new locales_db();
 $loaded = $l->getLanguageAllDb();
-
     
 $headline = lang::translate('Reload language_all files from <span class="notranslate">{template}</span> into DB', array ('template' => $template));
 html::headline($headline);
@@ -35,7 +34,6 @@ if (isset($_POST['update_lang'])) {
     foreach ($org as $key => $val) {
         $post_val = $_POST['input_key'][$i];
         if ($post_val != $val) {
-            log::error("$post_val\n$val\n");
             $ary[$key] = $post_val;
         } else {
             $ary[$key] = $val;
