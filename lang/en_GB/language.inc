@@ -15,8 +15,12 @@ $_COS_LANG_MODULE['Update all language files (may take a few minutes)'] = 'Updat
 
 // Translation of file /modules/locales/db.php
 
+$_COS_LANG_MODULE['Her er en lille test'] = 'Her er en lille test';
 $_COS_LANG_MODULE['Load language all into DB'] = 'Load language all into DB';
 $_COS_LANG_MODULE['submit'] = 'submit';
+$_COS_LANG_MODULE['Key'] = 'Key';
+$_COS_LANG_MODULE['Translation in'] = 'Translation in';
+$_COS_LANG_MODULE['No translation in'] = 'No translation in';
 $_COS_LANG_MODULE['Update'] = 'Update';
 $_COS_LANG_MODULE['Edit'] = 'Edit';
 

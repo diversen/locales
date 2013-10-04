@@ -91,8 +91,6 @@ class locales_db extends locales {
     
     public function displayEditLanguage ($key, $lang, $lang_mod = null) {
         
-        
-        
         $f = new html ();
         $f->formStart('update_lang');
         $f->hidden('lang', $key);
@@ -101,10 +99,24 @@ class locales_db extends locales {
        
         echo count($lang);
         $i = 0;
+        
+        $display_org_lang = config::getModuleIni('locales_display_translate_language');
+        $display = $this->getLanguageSingleDb($display_org_lang);
+        $display = unserialize($display['translation']);
+        
         foreach ($lang as $key => $val) {
-            $f->addHtml(html::specialEncode($key) . "<br />");
-            $length = strlen($val);
-            //$options = array ('size' => $length);
+            $display_from =  " '" . html::specialEncode($key) . "' (" . lang::translate('Key') . ")<br />";
+            
+            //$display_from.= "<hr />\n";
+            if (isset($display[$key])) {
+                $display_from.= " '" . html::specialEncode($display[$key]) . "'";
+            } else {
+                $not_translated = lang::translate('No translation in') . " ($display_org_lang)" . ""; 
+                $display_from.=$not_translated;
+            }
+            $display_from.= " (" .lang::translate('Translation in') . " $display_org_lang" . ")";
+            $display_from.="<br />";
+            $f->addHtml($display_from);
             $f->textareaSmall("input_key[$i]", html::specialEncode($val));
             $i++;
         }

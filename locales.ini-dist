@@ -6,3 +6,5 @@ locales_db_language = 1
 locales_language_all_template = 'template'
 ; if many translation strings you may need to modify max_input_vars. Default is 1000
 locales_max_input_vars = 0
+; when doing edits to DB language which language to display next to system key
+locales_display_translate_language = 'da_DK'

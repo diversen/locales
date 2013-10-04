@@ -45,7 +45,7 @@ if (isset($_POST['update_lang'])) {
     $diff = array_diff($ary, $org);
 
     $l->saveLanguageAllModsDb($_POST['lang'], $diff);
-    http::locationHeader("/locales/edit/1/$_POST[lang]", lang::translate('DB translation was updated'));
+    http::locationHeader("/locales/edit/1/$_POST[lang]", lang::translate('DB translation has been updated'));
 }
 
 
@@ -59,6 +59,3 @@ if ($edit == 1) {
 
     $l->displayEditLanguage($edit_lang, $lang);
 }
-
-
-
