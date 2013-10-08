@@ -41,6 +41,22 @@ class locales_db extends locales {
                 );
     }
     
+        /**
+     * displays reload language form
+     */
+    public function replaceForm () {
+        $h = new html ();
+        $h->formStart();
+        $h->legend(lang::translate('Search and replace in all strings'));
+        $h->label('search', lang::translate('Search string'));
+        $h->text('seach');
+        $h->label('replace', lang::translate('Replace string'));
+        $h->text('replace');
+        $h->submit('search_replace', lang::translate('Search and replace'));
+        $h->formEnd();
+        echo $h->getStr();
+    }
+    
     /**
      * reloads all language_all from file system to DB
      */
@@ -97,7 +113,7 @@ class locales_db extends locales {
         $f->legend('Change translation');
         $i = 0;
        
-        echo count($lang);
+        //echo count($lang);
         $i = 0;
         
         $display_org_lang = config::getModuleIni('locales_display_translate_language');
