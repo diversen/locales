@@ -11,5 +11,11 @@ if (!config::isWindows()) {
     // we can only set locales from web
     locales::displaySetLocaleUTF8();
 }
-locales::displaySetLanguage();
+
+if (isset($_POST['language'])) {
+    locales::updateLanguage();
+}
+
+$default = config::getMainIni('language');
+locales::displaySetLanguage($default);
 locales::displayReloadLang();

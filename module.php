@@ -5,7 +5,6 @@
  * @package locales
  */
 
-include_once "intl.php";
 moduleloader::includeModule('configdb');
 
 /**
@@ -49,9 +48,7 @@ class locales {
             if (intl::validLocaleUTF8($_POST['locale'])) {
                 configdb::set('locale', $_POST['locale'], 'main');
                 session::setActionMessage(lang::translate('Locale has been updated'));
-
-                header("Location: /locales/index");
-                exit;
+                http::locationHeader("/locales/index");
             } else {
                 session::setActionMessage(lang::translate('Locale is not valid'));
             }
@@ -82,6 +79,10 @@ class locales {
         return $ary; 
     }
     
+    /**
+     * get languages loaded
+     * @return array $rows languages
+     */
     public static function getLanguages() {
         $db = new db();
         $rows = $db->selectAll('language', array ('DISTINCT(language)'));
@@ -106,34 +107,63 @@ class locales {
     }
     
     /**
+     * updates a language with the configdb module
+     * @param string $redirect
+     */
+    public static function updateLanguage ($redirect = '/locales/index') {
+        if (self::validLanguage($_POST['language'])) {
+            // set interface language
+            configdb::set('language', $_POST['language'], 'main');
+                
+            // set html lang ="" attr
+            $lang = str_replace('_', '-', $_POST['language']);
+            configdb::set('lang', $lang, 'main');
+                
+            session::setActionMessage(lang::translate('Locale has been updated'));
+            http::locationHeader($redirect);
+        } else {
+            session::setActionMessage(lang::translate('Language is not valid'));
+        }
+    }
+    
+    /**
+     * updates a language per account
+     * this is placed in system_cache with the following uniqids 
+     *                  ('account_locales_language', {user_id})
+     *                  ('account_locales_lang', {user_id})
+     * @param string $redirect
+     */
+    public static function updateAccountLanguage ($redirect = '/locales/index') {
+        if (self::validLanguage($_POST['language'])) {
+            cache::set('account_locales_language', session::getUserId(), $_POST['language']);    
+            $lang = self::getHtmlLanguageCode ($_POST['language']);          
+            cache::set('account_locales_lang', session::getUserId(), $lang);
+            session::setActionMessage(lang::translate('Locale has been updated'));
+            http::locationHeader($redirect);
+        } else {
+            session::setActionMessage(lang::translate('Language is not valid'));
+        }
+    }
+    
+    /**
+     * transforms e.g. da_DK to da-DK
+     * @param type $language
+     * @return type
+     */
+    public static function getHtmlLanguageCode($language) {
+        return str_replace('_', '-', $language);
+    }
+    
+    /**
      * method for displaying a form for setting system translation (language)
      */
-    public static function displaySetLanguage () {
-        if (isset($_POST['language'])) {
-            if (self::validLanguage($_POST['language'])) {
-                // set interface language
-                configdb::set('language', $_POST['language'], 'main');
-                
-                // set html lang ="" attr
-                $lang = str_replace('_', '-', $_POST['language']);
-                configdb::set('lang', $lang, 'main');
-                
-                session::setActionMessage(lang::translate('Locale has been updated'));
-                http::locationHeader('/locales/index');
-            } else {
-                session::setActionMessage(lang::translate('Language is not valid'));
-            }
-        }
-
+    public static function displaySetLanguage ($default) {
         $dropdown = self::getLanguagesForDropdown();
-        $default = config::getMainIni('language');
-
         html::formStart('language');
         html::legend(lang::translate('Set language of interface and HTML document'));
         html::select('language', $dropdown, 'language', 'id', $default, array(), null);
         html::submit('submit', lang::system('system_submit'));
         html::formEnd();
-
         echo html::getStr();   
     } 
     
@@ -150,7 +180,6 @@ class locales {
         
         html::formStart('language_reload');
         html::legend(lang::translate('Update all language files (may take a few minutes)'));
-        //html::select('language', $dropdown, 'language', 'id', $default, array(), null);
         html::submit('language_reload', lang::system('system_submit'));
         html::formEnd();
         
