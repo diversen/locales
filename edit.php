@@ -1,6 +1,6 @@
 <?php
 
-if (!session::checkAccessControl('locales_allow')){
+if (!session::checkAccessFromModuleIni('locales_allow')){
     return;
 }
 
