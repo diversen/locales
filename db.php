@@ -75,7 +75,7 @@ class locales_db extends locales {
     }
     
     public function saveLanguageAllModsDb ($key, $save) {
-            
+
         $s = serialize($save);
         $values = array ('translation' => $s, 'module_name' => 'language_all_mod', 'language' => $key);
         $search = array ('module_name =' => 'language_all_mod', 'language =' => $key  );

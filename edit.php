@@ -1,5 +1,7 @@
 <?php
 
+
+
 if (!session::checkAccessFromModuleIni('locales_allow')){
     return;
 }
@@ -32,18 +34,16 @@ if (isset($_POST['update_lang'])) {
     $ary  = array ();
 
     foreach ($org as $key => $val) {
-        $post_val = $_POST['input_key'][$i];
-        if ($post_val != $val) {
+        $post_val = strings_normalize::newlinesToUnix($_POST['input_key'][$i]);
+        if ($post_val !== $val) {
             $ary[$key] = $post_val;
         } else {
             $ary[$key] = $val;
         }
         $i++;
     }
-    
-    // save just diff
-    $diff = array_diff($ary, $org);
 
+    $diff = array_diff_assoc($ary, $org);
     $l->saveLanguageAllModsDb($_POST['lang'], $diff);
     http::locationHeader("/locales/edit/1/$_POST[lang]", lang::translate('DB translation has been updated'));
 }
