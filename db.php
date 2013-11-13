@@ -105,6 +105,12 @@ class locales_db extends locales {
         return $ary;
     }
     
+    /**
+     * displays a form for editing a language
+     * @param string $key
+     * @param array $lang
+     * @param array $lang_mod
+     */
     public function displayEditLanguage ($key, $lang, $lang_mod = null) {
         
         $f = new html ();
@@ -141,6 +147,9 @@ class locales_db extends locales {
         echo $f->getStr();
     }
     
+    /**
+     * echos links for doing language edit
+     */
     public function editLanguageLinks () {
         $files = $this->getLanguageAllFiles();
         $langs = array_keys($files);
@@ -149,6 +158,11 @@ class locales_db extends locales {
         }
     }
     
+    /**
+     * returns a database language and modifictations if ant
+     * @param string $edit_lang
+     * @return array $language
+     */
     public function getOrgAndModLanguage ($edit_lang) {
         $org =  $this->getLanguageSingleDb($edit_lang);
         if (empty($org)) { 
@@ -156,7 +170,6 @@ class locales_db extends locales {
         }
         
         $lang = unserialize($org['translation']);
-
         $mod = $this->getLanguageSingleModDb($edit_lang);
         if (isset($mod['translation'])) {
             $mod_lang = unserialize($mod['translation']);
@@ -165,6 +178,11 @@ class locales_db extends locales {
         return $lang;
     }
     
+    /**
+     * loads single language from db
+     * @param string $language
+     * @return array $language
+     */
     public static function loadLanguageFromDb ($language) {
         $l = new locales_db();
         return $l->getOrgAndModLanguage($language);

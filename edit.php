@@ -1,7 +1,5 @@
 <?php
 
-
-
 if (!session::checkAccessFromModuleIni('locales_allow')){
     return;
 }
