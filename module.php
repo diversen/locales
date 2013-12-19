@@ -172,7 +172,6 @@ class locales {
         if (isset($_POST['language_reload'])) {
             
             $reload = new moduleinstaller();
-            $reload->reloadCosLanguages();
             $reload->reloadLanguages();
             session::setActionMessage(lang::translate('Locale has been updated'));
             http::locationHeader('/locales/index');
