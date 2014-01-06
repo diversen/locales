@@ -55,7 +55,7 @@ class locales {
         }
 
         $dropdown = intl::getSystemLocalesUTF8();
-        $default = config::getMainIni('locale');
+        $default = intl::getLocale();
 
         html::formStart('locale');
         html::legend(lang::translate('Set locale. Set e.g. dates and money symbols to your language specifics'));
