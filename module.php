@@ -54,7 +54,12 @@ class locales {
             }
         }
 
+        // if we can not get locales return
         $dropdown = intl::getSystemLocalesUTF8();
+        if (!$dropdown) {
+            return;
+        }
+        
         $default = intl::getLocale();
 
         html::formStart('locale');
