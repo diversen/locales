@@ -34,3 +34,7 @@ $_COS_LANG_MODULE['Reload language_all files from <span class="notranslate">{tem
 $_COS_LANG_MODULE['Languages has been reloaded'] = 'Languages has been reloaded';
 $_COS_LANG_MODULE['DB translation has been updated'] = 'DB translation er updated';
 $_COS_LANG_MODULE['No language has been loaded. Presss button to load'] = 'No language has been loaded. Presss button to load';
+
+// Translation of file /modules/locales/index.php
+
+$_COS_LANG_MODULE['Current date and time according to setup'] = 'Current date and time according to setup';

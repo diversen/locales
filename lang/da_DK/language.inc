@@ -25,3 +25,4 @@ $_COS_LANG_MODULE['Reload language_all files from <span class="notranslate">{tem
 $_COS_LANG_MODULE['Languages has been reloaded'] = 'Sprog er blevet genindlæst';
 $_COS_LANG_MODULE['DB translation has been updated'] = 'DB oversættelse is opdateret';
 $_COS_LANG_MODULE['No language has been loaded. Presss button to load'] = 'Ingen sprog er indlæst. Presss knappen for at indlæse';
+$_COS_LANG_MODULE['Current date and time according to setup'] = 'Aktuel dato og tid i henhold til opsætningen';

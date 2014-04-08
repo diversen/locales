@@ -21,15 +21,24 @@ class locales {
             if (intl::validTimezone($_POST['timezone'])) {
                 configdb::set('date_default_timezone', $_POST['timezone'], 'main');
                 session::setActionMessage(lang::translate('Timezone has been updated'));
-                header("Location: /locales/index");
-                exit;
+                http::locationHeader("/locales/index");
             } else {
                 session::setActionMessage(lang::translate('Timezone is not valid'));
             }
         }
 
-        $dropdown = intl::getTimezones();
         $default = config::getMainIni('date_default_timezone');
+        
+        self::setTimezoneForm($default);
+        
+    }
+    
+    /**
+     * displays dropdown view timezone selection
+     * @param string $default
+     */
+    public static function setTimezoneForm ($default = null) {
+        $dropdown = intl::getTimezones();
 
         html::formStart('timezone');
         html::legend(lang::translate('Set timezone for your system'));
@@ -37,7 +46,7 @@ class locales {
         html::submit('submit', lang::system('system_submit'));
         html::formEnd();
 
-        echo html::getStr();   
+        echo html::getStr();  
     }
     
     /**
@@ -147,6 +156,23 @@ class locales {
             http::locationHeader($redirect);
         } else {
             session::setActionMessage(lang::translate('Language is not valid'));
+        }
+    }
+    
+    /**
+     * updates a language per account
+     * this is placed in system_cache with the following uniqids 
+     *                  ('account_locales_language', {user_id})
+     *                  ('account_locales_lang', {user_id})
+     * @param string $redirect
+     */
+    public static function updateAccountTimezone ($redirect = '/locales/index') {
+        if (intl::validTimezone($_POST['timezone'])) {
+            cache::set('account_timezone', session::getUserId(), $_POST['timezone']);    
+            session::setActionMessage(lang::translate('Timezone has been updated'));
+            http::locationHeader($redirect);
+        } else {
+            session::setActionMessage(lang::translate('Timezone is not valid'));
         }
     }
     
