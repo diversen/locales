@@ -8,11 +8,9 @@ if (isset($_POST)) {
     html::specialEncode ($_POST);
 }
 
+// if user is logged in ensure to display system wide timezone
 date_default_timezone_set(config::getMainIni('date_default_timezone'));
-
-echo lang::translate('Current date and time according to setup');
-echo "<br />";
-echo strftime(config::getMainIni('date_format_long'));
+echo locales_views::timezoneInfo();
 
 locales::displaySetTimezone();
 if (!config::isWindows()) {
