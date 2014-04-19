@@ -7,7 +7,7 @@
  */
 
 $_INSTALL['MAIN_MENU_ITEM'] = array (
-    'title' => lang::translate('Language', null, array ('no_translate' => true)),
+    'title' => lang::translate('Language and time', null, array ('no_translate' => true)),
     'url' => '/locales/index',
     'auth' => 'admin',
     'module_name' => 'locales',
