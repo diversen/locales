@@ -40,7 +40,7 @@ class locales {
     public static function setTimezoneForm ($default = null) {
         $dropdown = intl::getTimezones();
 
-        html::formStart('timezone');
+        html::formStart('timezone_form');
         html::legend(lang::translate('Set timezone for your system'));
         html::setSelectTopValue(array());
         html::select('timezone', $dropdown, 'zone', 'id', $default, array(), null);
