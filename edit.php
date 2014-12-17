@@ -1,5 +1,7 @@
 <?php
 
+use diversen\strings\normalize as strings_normalize;
+
 if (!session::checkAccessFromModuleIni('locales_allow')){
     return;
 }
