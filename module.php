@@ -1,5 +1,6 @@
 <?php
 
+use diversen\cache;
 /**
  * File containing file for settings locales
  * @package locales
