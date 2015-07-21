@@ -8,14 +8,14 @@ class locales_db extends locales {
      * @return type
      */
     public function getLanguageAllDb () {
-        $rows = db_q::select('language')->
+        $rows = q::select('language')->
                 filter('module_name =', 'language_all')->
                 fetch();
         return $rows;
     }
     
     public function getLanguageSingleDb ($language) {
-        $row = db_q::select('language')->
+        $row = q::select('language')->
                 filter('module_name =', 'language_all')->condition('AND')->
                 filter('language =', $language)->
                 fetchSingle();
@@ -23,7 +23,7 @@ class locales_db extends locales {
     }
     
     public function getLanguageSingleModDb ($language) {
-        $row = db_q::select('language')->
+        $row = q::select('language')->
                 filter('module_name =', 'language_all_mod')->condition('AND')->
                 filter('language =', $language)->
                 fetchSingle();
@@ -69,7 +69,7 @@ class locales_db extends locales {
             $s = serialize($_COS_LANG_MODULE);
             $values = array ('translation' => $s, 'module_name' => 'language_all', 'language' => $key);
             $search = array ('module_name =' => 'language_all', 'language =' => $key  );
-            db_q::replace('language', $values, $search);
+            q::replace('language', $values, $search);
             unset($_COS_LANG_MODULE);
         }
     }
@@ -79,7 +79,7 @@ class locales_db extends locales {
         $s = serialize($save);
         $values = array ('translation' => $s, 'module_name' => 'language_all_mod', 'language' => $key);
         $search = array ('module_name =' => 'language_all_mod', 'language =' => $key  );
-        db_q::replace('language', $values, $search);
+        q::replace('language', $values, $search);
     }
     
 
