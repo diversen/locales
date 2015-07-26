@@ -6,7 +6,7 @@ if (!session::checkAccessFromModuleIni('locales_allow')){
     return;
 }
 
-$template = config::getModuleIni('locales_language_all_template');
+$template = conf::getModuleIni('locales_language_all_template');
 $l = new locales_db();
 $loaded = $l->getLanguageAllDb();
     

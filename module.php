@@ -28,7 +28,7 @@ class locales {
             }
         }
 
-        $default = config::getMainIni('date_default_timezone');
+        $default = conf::getMainIni('date_default_timezone');
         
         self::setTimezoneForm($default);
         

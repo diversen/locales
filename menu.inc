@@ -13,7 +13,7 @@ $_MODULE_MENU = array (
         
 );
 
-$locales_db = config::getModuleIni('locales_db_language');
+$locales_db = conf::getModuleIni('locales_db_language');
 if ($locales_db) {
     $_MODULE_MENU[] = array(
         'title' => lang::translate('Edit translation'),

@@ -9,11 +9,11 @@ if (isset($_POST)) {
 }
 
 // if user is logged in ensure to display system wide timezone
-date_default_timezone_set(config::getMainIni('date_default_timezone'));
+date_default_timezone_set(conf::getMainIni('date_default_timezone'));
 echo locales_views::timezoneInfo();
 
 locales::displaySetTimezone();
-if (!config::isWindows()) {
+if (!conf::isWindows()) {
     // we can only set locales from web
     locales::displaySetLocaleUTF8();
 }
@@ -22,6 +22,6 @@ if (isset($_POST['language'])) {
     locales::updateLanguage();
 }
 
-$default = config::getMainIni('language');
+$default = conf::getMainIni('language');
 locales::displaySetLanguage($default);
 locales::displayReloadLang();

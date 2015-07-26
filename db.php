@@ -89,7 +89,7 @@ class locales_db extends locales {
      * @return array $ary e.g. array ('da_DK' => /path/to/templates/template/lang/da_DK/language_all.inc');
      */
     public function getLanguageAllFiles () {
-        $template = config::getModuleIni('locales_language_all_template');
+        $template = conf::getModuleIni('locales_language_all_template');
         $lang_path = _COS_HTDOCS . "/templates/$template/lang/";
         $langs = file::getDirsGlob($lang_path);
 
@@ -122,7 +122,7 @@ class locales_db extends locales {
         //echo count($lang);
         $i = 0;
         
-        $display_org_lang = config::getModuleIni('locales_display_translate_language');
+        $display_org_lang = conf::getModuleIni('locales_display_translate_language');
         $display = $this->getLanguageSingleDb($display_org_lang);
         $display = unserialize($display['translation']);
         
