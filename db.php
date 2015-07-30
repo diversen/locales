@@ -90,7 +90,7 @@ class locales_db extends locales {
      */
     public function getLanguageAllFiles () {
         $template = conf::getModuleIni('locales_language_all_template');
-        $lang_path = _COS_HTDOCS . "/templates/$template/lang/";
+        $lang_path = conf::pathHtdocs() . "/templates/$template/lang/";
         $langs = file::getDirsGlob($lang_path);
 
         $ary = array ();
