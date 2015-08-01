@@ -1,5 +1,7 @@
 <?php
 
+use diversen\lang;
+use diversen\conf;
 /**
  * file for creating gallery module menu
  *

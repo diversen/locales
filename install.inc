@@ -1,5 +1,7 @@
 <?php
 
+use diversen\conf;
+use diversen\lang;
 /**
  * installer file for content module
  *
