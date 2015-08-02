@@ -1,5 +1,12 @@
 <?php
 
+use diversen\conf;
+use diversen\db\q;
+use diversen\file;
+use diversen\html;
+use diversen\html\helpers;
+use diversen\lang;
+
 
 class locales_db extends locales {
     
@@ -34,7 +41,7 @@ class locales_db extends locales {
      * displays reload language form
      */
     public function reloadForm () {
-        echo html_helpers::confirmForm(
+        echo helpers::confirmForm(
                 lang::translate('Load language all into DB'), 
                 lang::translate('submit'), 
                 'load_all'

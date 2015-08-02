@@ -1,15 +1,17 @@
 <?php
 
 use diversen\cache;
-use diversen\moduleloader;
 use diversen\conf;
-use diversen\moduleinstaller;
-use diversen\session;
-use diversen\html;
-use diversen\lang;
-use diversen\intl;
 use diversen\db;
+use diversen\html;
 use diversen\http;
+use diversen\intl;
+use diversen\lang;
+use diversen\moduleinstaller;
+use diversen\moduleloader;
+use diversen\session;
+use diversen\strings\normalize;
+use diversen\uri;
 
 
 /**
@@ -106,7 +108,7 @@ locales::displayReloadLang();
             $ary = array();
 
             foreach ($org as $key => $val) {
-                $post_val = strings_normalize::newlinesToUnix($_POST['input_key'][$i]);
+                $post_val = normalize::newlinesToUnix($_POST['input_key'][$i]);
                 if ($post_val !== $val) {
                     $ary[$key] = $post_val;
                 } else {

@@ -1,7 +1,7 @@
 <?php
 
-use diversen\lang;
 use diversen\conf;
+use diversen\lang;
 
 class locales_views {
     public static function timezoneInfo () {      
