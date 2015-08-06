@@ -146,7 +146,7 @@ locales::displayReloadLang();
         html::legend(lang::translate('Set timezone for your system'));
         html::setSelectTopValue(array());
         html::select('timezone', $dropdown, 'zone', 'id', $default, array(), null);
-        html::submit('submit', lang::system('system_submit'));
+        html::submit('submit', lang::translate('Submit'));
         html::formEnd();
 
         echo html::getStr();
@@ -177,7 +177,7 @@ locales::displayReloadLang();
         html::formStart('locale');
         html::legend(lang::translate('Set locale. Set e.g. dates and money symbols to your language specifics'));
         html::select('locale', $dropdown, 'locale', 'id', $default, array(), null);
-        html::submit('submit', lang::system('system_submit'));
+        html::submit('submit', lang::translate('Submit'));
         html::formEnd();
 
         echo html::getStr();
@@ -294,7 +294,7 @@ locales::displayReloadLang();
         html::formStart('language');
         html::legend(lang::translate('Set language of interface and HTML document'));
         html::select('language', $dropdown, 'language', 'id', $default, array(), null);
-        html::submit('submit', lang::system('system_submit'));
+        html::submit('submit', lang::translate('Submit'));
         html::formEnd();
         echo html::getStr();
     }
@@ -311,7 +311,7 @@ locales::displayReloadLang();
 
         html::formStart('language_reload');
         html::legend(lang::translate('Update all language files (may take a few minutes)'));
-        html::submit('language_reload', lang::system('system_submit'));
+        html::submit('language_reload', lang::translate('Submit'));
         html::formEnd();
 
         echo html::getStr();
