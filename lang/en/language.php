@@ -30,7 +30,6 @@ $LANG['Locale is not valid'] = 'Locale is not valid';
 $LANG['Set locale. Set e.g. dates and money symbols to your language specifics'] = 'Set locale. Set e.g. dates and money symbols to your language specifics';
 $LANG['Language is not valid'] = 'Language is not valid';
 $LANG['Set language of interface and HTML document'] = 'Set language of interface and HTML document';
-$LANG['Update all language files (may take a few minutes)'] = 'Update all language files (may take a few minutes)';
 // Translation of file modules/locales/install.inc
 
 $LANG['Language and time'] = 'Language and time';
