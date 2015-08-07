@@ -188,23 +188,14 @@ locales::displayReloadLang();
      * @return array $rows rows with system languages for populating dropdown
      */
     public static function getLanguagesForDropdown() {
-        $rows = self::getLanguages();
-        $ary = array();
-        foreach ($rows as $key => $val) {
-            $ary[] = array('id' => $val['language'], 'language' => $val['language']);
+        
+        $languages = conf::getModuleIni('locales_languages');
+        foreach ($languages as $val) {
+            $ary[] = array('id' => $val, 'language' => $val);
         }
         return $ary;
     }
 
-    /**
-     * get languages loaded
-     * @return array $rows languages
-     */
-    public static function getLanguages() {
-        $db = new db();
-        $rows = $db->selectAll('language', array('DISTINCT(language)'));
-        return $rows;
-    }
 
     /**
      * method for checking if system translation (language) exists 
@@ -304,7 +295,7 @@ locales::displayReloadLang();
         if (isset($_POST['language_reload'])) {
 
             $reload = new moduleinstaller();
-            $reload->reloadLanguages();
+
             session::setActionMessage(lang::translate('Locale has been updated'));
             http::locationHeader('/locales/index');
         }

@@ -73,11 +73,11 @@ class locales_db extends locales {
             
             include $file;
             
-            $s = serialize($_COS_LANG_MODULE);
+            $s = serialize($LANG);
             $values = array ('translation' => $s, 'module_name' => 'language_all', 'language' => $key);
             $search = array ('module_name =' => 'language_all', 'language =' => $key  );
             q::replace('language', $values, $search);
-            unset($_COS_LANG_MODULE);
+            unset($LANG);
         }
     }
     
