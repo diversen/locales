@@ -2,7 +2,6 @@
 
 use diversen\cache;
 use diversen\conf;
-use diversen\db;
 use diversen\html;
 use diversen\http;
 use diversen\intl;
@@ -12,7 +11,6 @@ use diversen\moduleloader;
 use diversen\session;
 use diversen\strings\normalize;
 use diversen\uri;
-
 
 /**
  * File containing file for settings locales
@@ -41,38 +39,40 @@ class locales {
         }
 
         $default = conf::getMainIni('date_default_timezone');
-
         self::setTimezoneForm($default);
     }
-    
-    
-    public function indexAction () {
-        
-if (!session::checkAccessFromModuleIni('locales_allow')){
-    return;
-}
 
-if (isset($_POST)) { 
-    html::specialEncode ($_POST);
-}
+    /**
+     * /locales/index action
+     * @return void
+     */
+    public function indexAction() {
 
-// if user is logged in ensure to display system wide timezone
-date_default_timezone_set(conf::getMainIni('date_default_timezone'));
-echo locales_views::timezoneInfo();
+        if (!session::checkAccessFromModuleIni('locales_allow')) {
+            return;
+        }
 
-locales::displaySetTimezone();
-if (!conf::isWindows()) {
-    // we can only set locales from web
-    locales::displaySetLocaleUTF8();
-}
+        if (isset($_POST)) {
+            html::specialEncode($_POST);
+        }
 
-if (isset($_POST['language'])) {
-    locales::updateLanguage();
-}
+        // if user is logged in ensure to display system wide timezone
+        date_default_timezone_set(conf::getMainIni('date_default_timezone'));
+        echo locales_views::timezoneInfo();
 
-$default = conf::getMainIni('language');
-locales::displaySetLanguage($default);
-locales::displayReloadLang();
+        locales::displaySetTimezone();
+        if (!conf::isWindows()) {
+            // we can only set locales from web
+            locales::displaySetLocaleUTF8();
+        }
+
+        if (isset($_POST['language'])) {
+            locales::updateLanguage();
+        }
+
+        $default = conf::getMainIni('language');
+        locales::displaySetLanguage($default);
+
     }
 
     public function editAction() {
@@ -188,14 +188,13 @@ locales::displayReloadLang();
      * @return array $rows rows with system languages for populating dropdown
      */
     public static function getLanguagesForDropdown() {
-        
+
         $languages = conf::getModuleIni('locales_languages');
         foreach ($languages as $val) {
             $ary[] = array('id' => $val, 'language' => $val);
         }
         return $ary;
     }
-
 
     /**
      * method for checking if system translation (language) exists 
@@ -290,23 +289,6 @@ locales::displayReloadLang();
         echo html::getStr();
     }
 
-    public static function displayReloadLang() {
-
-        if (isset($_POST['language_reload'])) {
-
-            $reload = new moduleinstaller();
-
-            session::setActionMessage(lang::translate('Locale has been updated'));
-            http::locationHeader('/locales/index');
-        }
-
-        html::formStart('language_reload');
-        html::legend(lang::translate('Update all language files (may take a few minutes)'));
-        html::submit('language_reload', lang::translate('Submit'));
-        html::formEnd();
-
-        echo html::getStr();
-    }
 
 }
 
