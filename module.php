@@ -75,6 +75,10 @@ class locales {
 
     }
 
+    /**
+     * locales/edit action
+     * @return type
+     */
     public function editAction() {
         if (!session::checkAccessFromModuleIni('locales_allow')) {
             return;
