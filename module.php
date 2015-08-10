@@ -6,7 +6,6 @@ use diversen\html;
 use diversen\http;
 use diversen\intl;
 use diversen\lang;
-use diversen\moduleinstaller;
 use diversen\moduleloader;
 use diversen\session;
 use diversen\strings\normalize;
