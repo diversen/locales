@@ -1,9 +1,10 @@
 <?php
 
+namespace modules\locales;
 use diversen\conf;
 use diversen\lang;
 
-class locales_views {
+class views {
     public static function timezoneInfo () {      
         $str = lang::translate('Current date and time according to setup');
         $str.= "<br />";

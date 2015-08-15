@@ -1,5 +1,7 @@
 <?php
 
+namespace modules\locales;
+
 use diversen\cache;
 use diversen\conf;
 use diversen\html;
@@ -8,20 +10,25 @@ use diversen\intl;
 use diversen\lang;
 use diversen\moduleloader;
 use diversen\session;
-use diversen\strings\normalize;
-use diversen\uri;
+//use diversen\strings\normalize;
+//use diversen\uri;
 
 /**
  * File containing file for settings locales
  * @package locales
  */
+
+use modules\configdb\module as configdb;
+use modules\locales\views as locales_views;
+
 moduleloader::includeModule('configdb');
+
 
 /**
  * Class for setting locales
  * @package locales
  */
-class locales {
+class module {
 
     /**
      * displays a form for setting default timezone
@@ -59,18 +66,18 @@ class locales {
         date_default_timezone_set(conf::getMainIni('date_default_timezone'));
         echo locales_views::timezoneInfo();
 
-        locales::displaySetTimezone();
+        self::displaySetTimezone();
         if (!conf::isWindows()) {
             // we can only set locales from web
-            locales::displaySetLocaleUTF8();
+            self::displaySetLocaleUTF8();
         }
 
         if (isset($_POST['language'])) {
-            locales::updateLanguage();
+            self::updateLanguage();
         }
 
         $default = conf::getMainIni('language');
-        locales::displaySetLanguage($default);
+        self::displaySetLanguage($default);
 
     }
 
@@ -229,8 +236,4 @@ class locales {
     }
 
 
-}
-
-class locales_module extends locales {
-    
 }
