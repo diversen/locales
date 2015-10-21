@@ -90,7 +90,6 @@ class module {
 
         html::formStart('timezone_form');
         html::legend(lang::translate('Set timezone for your system'));
-        html::setSelectTopValue(array());
         html::select('timezone', $dropdown, 'zone', 'id', $default, array(), null);
         html::submit('submit', lang::translate('Submit'));
         html::formEnd();
