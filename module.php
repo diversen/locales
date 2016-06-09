@@ -19,7 +19,7 @@ use diversen\session;
  */
 
 use modules\configdb\module as configdb;
-use modules\locales\views as locales_views;
+use modules\locales\views;
 
 moduleloader::includeModule('configdb');
 
@@ -64,7 +64,7 @@ class module {
 
         // if user is logged in ensure to display system wide timezone
         date_default_timezone_set(conf::getMainIni('date_default_timezone'));
-        echo locales_views::timezoneInfo();
+        echo views::timezoneInfo();
 
         self::displaySetTimezone();
         if (!conf::isWindows()) {
